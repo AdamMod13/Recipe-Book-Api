@@ -1,11 +1,14 @@
 package com.example.recipeBook.recipe;
 
 import com.example.recipeBook.author.AuthorEntity;
+import com.example.recipeBook.recipeIngredients.RecipeIngredientsEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity(name = "recipe")
+@Entity(name = "Recipe")
 @Table(name = "recipes")
 public class RecipeEntity {
 
@@ -41,6 +44,9 @@ public class RecipeEntity {
             )
     )
     private AuthorEntity author;
+
+    @OneToMany(mappedBy = "recipe", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<RecipeIngredientsEntity> recipeIngredientsEntityList = new ArrayList<>();
 
     public RecipeEntity(String recipeName, String description, LocalDate createDate, AuthorEntity author) {
         this.recipeName = recipeName;

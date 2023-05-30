@@ -1,8 +1,12 @@
 package com.example.recipeBook.ingredient;
 
-import javax.persistence.*;
+import com.example.recipeBook.recipeIngredients.RecipeIngredientsEntity;
 
-@Entity(name = "ingredient")
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity(name = "Ingredient")
 @Table(name = "ingredients")
 public class IngredientEntity {
 
@@ -22,4 +26,9 @@ public class IngredientEntity {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
+    @OneToMany(
+            mappedBy = "ingredient",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE}
+    )
+    private List<RecipeIngredientsEntity> recipeIngredientsEntityList = new ArrayList<>();
 }

@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "author")
-@Table(name = "author", uniqueConstraints = {
+@Entity(name = "Author")
+@Table(name = "authors", uniqueConstraints = {
         @UniqueConstraint(name = "author_email_unique", columnNames = "email")
 })
 public class AuthorEntity {
