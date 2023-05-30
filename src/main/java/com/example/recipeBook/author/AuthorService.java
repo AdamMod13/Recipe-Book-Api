@@ -16,4 +16,8 @@ public class AuthorService {
     public List<AuthorEntity> getAuthors() {
         return authorRepository.findAll();
     }
+
+    public void addAuthor(AuthorEntity newAuthor) {
+        authorRepository.save(newAuthor);
+    }
 }

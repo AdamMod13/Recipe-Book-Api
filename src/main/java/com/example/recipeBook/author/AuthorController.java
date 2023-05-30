@@ -1,9 +1,8 @@
 package com.example.recipeBook.author;
 
+import com.example.recipeBook.ingredient.IngredientEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +22,8 @@ public class AuthorController {
         return authorService.getAuthors();
     }
 
+    @RequestMapping(value = "/addAuthor", method = RequestMethod.POST)
+    public void addIngredient(@RequestBody AuthorEntity newAuthor) {
+        authorService.addAuthor(newAuthor);
+    }
 }
