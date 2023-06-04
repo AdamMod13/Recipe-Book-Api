@@ -1,11 +1,12 @@
 package com.example.recipeBook.recipe;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
+@Controller
 @RestController
 @RequestMapping(path = "api/recipe")
 public class RecipeController {
@@ -17,7 +18,12 @@ public class RecipeController {
     }
 
     @GetMapping("")
-    public List<RecipeEntity> getRecipes() {
-        return recipeService.getRecipes();
+    public List<Recipe> getRecipes() {
+        return this.recipeService.getRecipes();
+    }
+
+    @PostMapping(value = "addRecipe")
+    public void addRecipe(@RequestBody Recipe newRecipe) {
+        this.recipeService.addRecipe(newRecipe);
     }
 }

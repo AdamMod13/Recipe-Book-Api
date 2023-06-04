@@ -5,4 +5,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<AuthorEntity, Long> {
+
+    Boolean existsByEmail(String email);
+
+    AuthorEntity findByEmail(String email);
 }
